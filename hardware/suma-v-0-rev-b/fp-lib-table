@@ -1,0 +1,5 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "suma-v-0-rev-b") (type "KiCad") (uri "${KIPRJMOD}/bibliotecas/suma-v-0-rev-b.pretty") (options "") (descr "biblioteca local generada con partes-jlcpcb/generar_biblioteca.py"))
+	(lib (name "popusintes") (type "KiCad") (uri "${KIPRJMOD}/bibliotecas/popusintes.pretty") (options "") (descr "huellas propias de piruetas para popusintes"))
+)

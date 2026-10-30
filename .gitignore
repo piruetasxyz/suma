@@ -36,3 +36,9 @@ fp-info-cache
 .history
 ## Local project settings
 *.kicad_prl
+
+# easyeda2kicad
+.easyeda_cache/
+
+# Gerbers comprimidos (se generan desde la carpeta -fab)
+*-fab.zip

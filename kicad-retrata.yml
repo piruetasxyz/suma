@@ -2,6 +2,15 @@
 # Todas las rutas son relativas a la raíz del repositorio.
 carpeta-imagenes: docs/images
 
+descripciones:
+  "suma-v-0-rev-a:C": "Condensador cerámico 0805"
+  "suma-v-0-rev-a:D_Schottky": "Diodo Schottky 1N5817W, protección contra polaridad inversa"
+  "suma-v-0-rev-a:AudioJack2_SwitchT": "Jack mono 3.5 mm, QingPu WQP-PJ398SM (tipo Thonkiconn), vertical, THT"
+  "suma-v-0-rev-a:Conn_02x05_Odd_Even": "Header de alimentación Eurorack (10 pines): 2x05, 2.54 mm, vertical, THT"
+  "suma-v-0-rev-a:R": "Resistencia 0805"
+  "suma-v-0-rev-a:R_Potentiometer": "Potenciómetro 9 mm, Alps RK09K, vertical, THT"
+  "suma-v-0-rev-a:TL072": "Amplificador operacional dual TL072, SOIC-8"
+
 # Para cambiar de revisión, actualizar "proyecto" (por ejemplo rev-a → rev-b).
 modulos:
   - nombre: suma

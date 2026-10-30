@@ -26,3 +26,7 @@ SPDX-License-Identifier = "LicenseRef-piruetas-branding"
 path = ["README.md", "LICENSE.md", "REUSE.toml", ".gitignore", "requirements.txt", "kicad-retrata.yml", ".github/**"]
 SPDX-FileCopyrightText = "2026 piruetas SpA / Aarón Montoya-Moraga"
 SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+# terceros/popusintes-cajas-paneles es un submodulo de git con su propia
+# licencia (MIT, ver su archivo LICENSE). reuse ignora los submodulos,
+# asi que no lleva anotacion aca.

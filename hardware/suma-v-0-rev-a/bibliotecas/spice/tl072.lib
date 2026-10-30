@@ -1,0 +1,48 @@
+* tl072.lib
+* modelos SPICE del TL072 para simular suma en KiCad / ngspice.
+*
+* TL072_UNO: macro-modelo de un amplificador (estilo Boyle, basado en el modelo de TI).
+* es aproximado: para resultados mas finos, reemplazar por el modelo oficial de TI
+* (https://www.ti.com/product/TL072 -> Design & development -> TL072 PSpice model).
+*
+* TL072_DOBLE: el encapsulado completo SOIC-8, con los pines en el orden del integrado,
+* para asignarlo al simbolo U1 (sus tres unidades comparten el mismo modelo).
+
+.SUBCKT TL072_UNO noinv inv vpos vneg salida
+C1 11 12 3.498E-12
+C2 6 7 15.00E-12
+DC salida 53 DX
+DE 54 salida DX
+DLP 90 91 DX
+DLN 92 90 DX
+DP vneg vpos DX
+EGND 99 0 POLY(2) (vpos,0) (vneg,0) 0 .5 .5
+FB 7 99 POLY(5) VB VC VE VLP VLN 0 4.715E6 -5E6 5E6 5E6 -5E6
+GA 6 0 11 12 282.8E-6
+GCM 0 6 10 99 8.942E-9
+ISS vpos 10 DC 195.0E-6
+HLIM 90 0 VLIM 1K
+J1 11 inv 10 JX
+J2 12 noinv 10 JX
+R2 6 9 100.0E3
+RD1 vneg 11 3.536E3
+RD2 vneg 12 3.536E3
+RO1 8 salida 150
+RO2 7 99 150
+* RP fija el consumo en reposo (~1.4 mA por amplificador a +-15 V)
+RP vpos vneg 21.4E3
+RSS 10 99 1.026E6
+VB 9 0 DC 0
+VC vpos 53 DC 2.200
+VE 54 vneg DC 2.200
+VLIM 7 8 DC 0
+VLP 91 0 DC 25
+VLN 0 92 DC 25
+.MODEL DX D(IS=800.0E-18)
+.MODEL JX PJF(IS=15.00E-12 BETA=270.1E-6 VTO=-1)
+.ENDS TL072_UNO
+
+.SUBCKT TL072_DOBLE salida_a inv_a noinv_a vneg noinv_b inv_b salida_b vpos
+XA noinv_a inv_a vpos vneg salida_a TL072_UNO
+XB noinv_b inv_b vpos vneg salida_b TL072_UNO
+.ENDS TL072_DOBLE

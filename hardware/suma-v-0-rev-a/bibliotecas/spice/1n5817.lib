@@ -1,0 +1,5 @@
+* 1n5817.lib
+* modelo SPICE generico del diodo Schottky 1N5817 (D1, D2: proteccion de polaridad).
+* IS alto: modela tambien la corriente de fuga en inverso, que importa si el diodo
+* queda montado al reves.
+.MODEL 1N5817 D(IS=31.7u RS=0.051 N=1.373 CJO=190p M=0.3 EG=0.69 XTI=2 BV=20 IBV=1m)

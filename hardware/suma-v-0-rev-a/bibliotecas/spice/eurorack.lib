@@ -1,0 +1,24 @@
+* eurorack.lib
+* modelos SPICE para los conectores de suma, para simular el modulo sin agregar
+* fuentes al esquematico: cada conector se comporta como lo que tiene enchufado.
+
+* FUENTE_EURORACK: header de 10 pines (J4) conectado a una fuente de +-12 V.
+* pines 1-2: -12 V, pines 3-8: GND, pines 9-10: +12 V.
+.SUBCKT FUENTE_EURORACK p1 p2 p3 p4 p5 p6 p7 p8 p9 p10
+VPOS p9 p3 DC 12
+VNEG p1 p3 DC -12
+.ENDS FUENTE_EURORACK
+
+* JACK_ENTRADA: jack de entrada con un oscilador enchufado (senoidal).
+* s: manga (sleeve), tn: switch (tip normal), t: punta (tip).
+* amplitud en volts pico (2.5 = 5 Vpp, nivel tipico de audio en eurorack).
+.SUBCKT JACK_ENTRADA s tn t PARAMS: amplitud=2.5 frecuencia=220
+VOSC t s SIN(0 {amplitud} {frecuencia})
+.ENDS JACK_ENTRADA
+
+* JACK_SALIDA: jack de salida con un cable a la entrada de otro modulo (100k).
+.SUBCKT JACK_SALIDA s tn t
+RCARGA t s 100k
+* el switch no se usa en las salidas: resistencia alta para que el nodo no quede flotando
+RTN tn s 1G
+.ENDS JACK_SALIDA
